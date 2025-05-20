@@ -1,0 +1,48 @@
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Client ID:
+    <input formControlName="client_id" type="number" required>
+  </label>
+  <label>
+    Date:
+    <input formControlName="date" type="datetime-local" required>
+  </label>
+  <label>
+    Status:
+    <select formControlName="status">
+      <option value="pending">En attente</option>
+      <option value="processing">En cours</option>
+      <option value="shipped">Expédiée</option>
+    </select>
+  </label>
+  <button type="submit" [disabled]="form.invalid">{{ editing ? 'Modifier' : 'Ajouter' }}</button>
+  <button type="button" *ngIf="editing" (click)="cancel()">Annuler</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Client ID</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let commande of commandes">
+      <td>{{ commande.id }}</td>
+      <td>{{ commande.client_id }}</td>
+      <td>{{ commande.date | date:'short' }}</td>
+      <td>{{ commande.status }}</td>
+      <td>
+        <button (click)="edit(commande)">Editer</button>
+        <button (click)="delete(commande.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

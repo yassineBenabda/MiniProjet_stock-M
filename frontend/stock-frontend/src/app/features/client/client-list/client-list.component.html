@@ -1,0 +1,21 @@
+<div *ngIf="loading">Loading clients...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+<table *ngIf="!loading && clients.length > 0" class="client-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.address }}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!loading && clients.length === 0">No clients found.</div>

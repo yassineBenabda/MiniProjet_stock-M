@@ -1,0 +1,50 @@
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Nom:
+    <input formControlName="name" type="text" required>
+  </label>
+  <label>
+    Référence:
+    <input formControlName="reference" type="text" required>
+  </label>
+  <label>
+    Prix:
+    <input formControlName="price" type="number" min="0" required>
+  </label>
+  <label>
+    Stock:
+    <input formControlName="stock" type="number" min="0" required>
+  </label>
+  <button type="submit" [disabled]="form.invalid">{{ editing ? 'Modifier' : 'Ajouter' }}</button>
+  <button type="button" *ngIf="editing" (click)="cancel()">Annuler</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Référence</th>
+      <th>Prix</th>
+      <th>Stock</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let article of articles">
+      <td>{{ article.id }}</td>
+      <td>{{ article.name }}</td>
+      <td>{{ article.reference }}</td>
+      <td>{{ article.price }}</td>
+      <td>{{ article.stock }}</td>
+      <td>
+        <button (click)="edit(article)">Editer</button>
+        <button (click)="delete(article.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
