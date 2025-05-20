@@ -1,50 +1,52 @@
-<div *ngIf="error" class="error">{{ error }}</div>
+<div class="container">
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <label>
-    Nom:
-    <input formControlName="name" type="text" required>
-  </label>
-  <label>
-    Email:
-    <input formControlName="email" type="email" required>
-  </label>
-  <label>
-    Téléphone:
-    <input formControlName="phone" type="text" required>
-  </label>
-  <label>
-    Adresse:
-    <input formControlName="address" type="text" required>
-  </label>
-  <button type="submit" [disabled]="form.invalid">{{ editing ? 'Modifier' : 'Ajouter' }}</button>
-  <button type="button" *ngIf="editing" (click)="cancel()">Annuler</button>
-</form>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Nom:</label>
+      <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email:</label>
+      <input formControlName="email" type="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Téléphone:</label>
+      <input formControlName="phone" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Adresse:</label>
+      <input formControlName="address" type="text" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary me-2" [disabled]="form.invalid">{{ editing ? 'Modifier' : 'Ajouter' }}</button>
+    <button type="button" class="btn btn-secondary" *ngIf="editing" (click)="cancel()">Annuler</button>
+  </form>
 
-<hr>
+  <hr>
 
-<table border="1" cellpadding="8">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nom</th>
-      <th>Email</th>
-      <th>Téléphone</th>
-      <th>Adresse</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let client of clients">
-      <td>{{ client.id }}</td>
-      <td>{{ client.name }}</td>
-      <td>{{ client.email }}</td>
-      <td>{{ client.phone }}</td>
-      <td>{{ client.address }}</td>
-      <td>
-        <button (click)="edit(client)">Editer</button>
-        <button (click)="delete(client.id)">Supprimer</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Adresse</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.id }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phone }}</td>
+        <td>{{ client.address }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="edit(client)">Editer</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(client.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
