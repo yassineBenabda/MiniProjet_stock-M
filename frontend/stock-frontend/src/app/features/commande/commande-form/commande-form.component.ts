@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-commande-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './commande-form.component.html',
-  styleUrl: './commande-form.component.css'
+  templateUrl: './commande-form.component.html'
 })
 export class CommandeFormComponent implements OnInit {
   commandes: Commande[] = [];

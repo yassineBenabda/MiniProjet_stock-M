@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\LigneCommande;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,6 @@ class ApiCommandeController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $commande = new Commande();
-
         if (isset($data['client_id'])) {
             $commande->setClientId((int) $data['client_id']);
         }
@@ -44,6 +44,16 @@ class ApiCommandeController extends AbstractController
         }
 
         $em->persist($commande);
+        $em->flush();
+
+        // Save order lines
+        foreach ($data['lignes'] as $ligne) {
+            $lc = new LigneCommande();
+            $lc->setCommandeId($commande->getId());
+            $lc->setArticleId($ligne['article_id']);
+            $lc->setQuantity($ligne['quantity']);
+            $em->persist($lc);
+        }
         $em->flush();
 
         return $this->json($commande, 201, [], ['groups' => 'commande:read']);

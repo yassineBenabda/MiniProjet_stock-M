@@ -7,8 +7,7 @@ import { Commande } from '../../../models/models/commande';
   selector: 'app-commande-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './commande-list.component.html',
-  styleUrl: './commande-list.component.css'
+  templateUrl: './commande-list.component.html'
 })
 export class CommandeListComponent implements OnInit {
   commandes: Commande[] = [];

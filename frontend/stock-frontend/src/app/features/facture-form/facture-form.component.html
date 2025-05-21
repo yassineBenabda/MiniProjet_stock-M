@@ -1,0 +1,28 @@
+<div class="container my-4">
+  <form [formGroup]="factureForm" (ngSubmit)="onSubmit()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Commande ID:</label>
+      <input formControlName="commande_id" type="number" class="form-control" [class.is-invalid]="factureForm.get('commande_id')?.invalid && factureForm.get('commande_id')?.touched" />
+      <div class="invalid-feedback" *ngIf="factureForm.get('commande_id')?.invalid && factureForm.get('commande_id')?.touched">
+        Commande ID is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Total:</label>
+      <input formControlName="total" type="number" step="0.01" class="form-control" [class.is-invalid]="factureForm.get('total')?.invalid && factureForm.get('total')?.touched" />
+      <div class="invalid-feedback" *ngIf="factureForm.get('total')?.invalid && factureForm.get('total')?.touched">
+        Total is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Date:</label>
+      <input formControlName="date" type="datetime-local" class="form-control" [class.is-invalid]="factureForm.get('date')?.invalid && factureForm.get('date')?.touched" />
+      <div class="invalid-feedback" *ngIf="factureForm.get('date')?.invalid && factureForm.get('date')?.touched">
+        Date is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="factureForm.invalid">
+      {{ isEdit ? 'Update' : 'Create' }} Facture
+    </button>
+  </form>
+</div>

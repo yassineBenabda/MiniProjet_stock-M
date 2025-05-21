@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- <div *ngIf="loading" class="alert alert-info">Loading articles...</div> -->
+  <div *ngIf="loading" class="alert alert-info">Loading articles...</div>
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
   <div *ngIf="!loading && !error && articles.length === 0" class="alert alert-warning">

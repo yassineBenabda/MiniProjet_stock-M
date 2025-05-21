@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-article-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './article-form.component.html',
-  styleUrl: './article-form.component.css'
+  templateUrl: './article-form.component.html'
 })
 export class ArticleFormComponent implements OnInit {
   articles: Article[] = [];

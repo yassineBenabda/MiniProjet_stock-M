@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- <div *ngIf="loading" class="alert alert-info">Loading clients...</div> -->
+  <div *ngIf="loading" class="alert alert-info">Loading clients...</div>
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
   <div *ngIf="!loading && clients.length === 0" class="alert alert-warning">No clients found.</div>
 

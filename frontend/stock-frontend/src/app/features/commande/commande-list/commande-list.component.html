@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- <div *ngIf="loading" class="alert alert-info">Chargement...</div> -->
+  <div *ngIf="loading" class="alert alert-info">Chargement...</div>
   <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
   <table *ngIf="!loading && !error && commandes.length > 0" class="table table-bordered table-striped">

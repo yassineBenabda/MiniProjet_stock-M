@@ -8,8 +8,7 @@ import { Article } from '../../../models/models/article';
   selector: 'app-article-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+  templateUrl: './article-list.component.html'
 })
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
